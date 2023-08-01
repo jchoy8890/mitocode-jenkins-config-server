@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: config-server
+  template:
+    metadata:
+      labels:
+        app-name: config-server
+        service-name: config-server
+    spec:
+      containers:
+      - name: config-server
+        image: acrmitocode.azurecr.io/config-server:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8761
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: config-server
+    k8s-app: config-server
+  name: config-server
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8761
+  type: LoadBalancer
+  selector:
+    app: config-server
