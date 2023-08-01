@@ -10,8 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app-name: config-server
-        service-name: config-server
+        app: config-server
     spec:
       containers:
       - name: config-server
