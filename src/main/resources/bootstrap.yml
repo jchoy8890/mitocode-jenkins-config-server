@@ -5,7 +5,7 @@ eureka:
   client:
     register-with-eureka: true
     service-url:
-      defaultZone: ${EUREKA.SERVER.HOSTNAME:http://discovery-server:8761/eureka}
+      defaultZone: ${EUREKA.SERVER.HOSTNAME:http://52.190.29.190/eureka}
 
 spring:
   application:
