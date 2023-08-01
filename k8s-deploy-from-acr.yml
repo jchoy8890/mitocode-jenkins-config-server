@@ -17,7 +17,7 @@ spec:
         image: acrmitocode.azurecr.io/config-server:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8761
+        - containerPort: 9000
 # service type loadbalancer       
 ---
 apiVersion: v1
@@ -32,7 +32,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8761
+    targetPort: 9000
   type: LoadBalancer
   selector:
     app: config-server
